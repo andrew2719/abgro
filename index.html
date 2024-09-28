@@ -3,10 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Simple Website</title>
+    <title>Dynamic Theme Switcher</title>
+    <link id="themeStylesheet" rel="stylesheet" href="light-theme.css">
+    <style>
+        body {
+            transition: background-color 0.5s, color 0.5s;
+        }
+    </style>
 </head>
 <body>
     <h1>Welcome to My Website!</h1>
-    <p>This is a simple page published with GitHub Pages.</p>
+    <p>This is a simple page with dynamic themes.</p>
+    <button id="themeToggle">Switch to Dark Theme</button>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        let darkTheme = false;
+
+        themeToggle.addEventListener('click', () => {
+            darkTheme = !darkTheme;
+            const themeStylesheet = document.getElementById('themeStylesheet');
+            themeStylesheet.href = darkTheme ? 'dark-theme.css' : 'light-theme.css';
+            themeToggle.textContent = darkTheme ? 'Switch to Light Theme' : 'Switch to Dark Theme';
+        });
+    </script>
 </body>
 </html>
